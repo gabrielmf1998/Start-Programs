@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+// controla o volume da musica
+const musiquinha = document.getElementById('musiquinha');
+musiquinha.volume = 0.05; 
+
     // Animação suave de scroll para âncoras (opcional, se você adicionar links no header para seções)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
