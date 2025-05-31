@@ -1,0 +1,299 @@
+/* Variáveis de Tema */
+:root {
+    --bg-color-light: #f4f7f6;
+    --text-color-light: #333;
+    --card-bg-light: #ffffff;
+    --primary-color-light: #060606;
+    --primary-hover-light: #8b8b8b;
+    --header-bg-light: #ffffff;
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    --bg-color-dark: #000000;
+    --text-color-dark: #efefef;
+    --card-bg-dark: #0f0f0f;
+    --primary-color-dark: #727272;
+    --primary-hover-dark: #353535;
+    --header-bg-dark: #0b0b0b;
+    --shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+    /* Cores atuais - iniciam com light */
+    --bg-color: var(--bg-color-light);
+    --text-color: var(--text-color-light);
+    --card-bg: var(--card-bg-light);
+    --primary-color: var(--primary-color-light);
+    --primary-hover: var(--primary-hover-light);
+    --header-bg: var(--header-bg-light);
+    --shadow: var(--shadow-light);
+    --section-border-color: #e0e0e0;
+}
+
+body.dark-theme {
+    --bg-color: var(--bg-color-dark);
+    --text-color: var(--text-color-dark);
+    --card-bg: var(--card-bg-dark);
+    --primary-color: var(--primary-color-dark);
+    --primary-hover: var(--primary-hover-dark);
+    --header-bg: var(--header-bg-dark);
+    --shadow: var(--shadow-dark);
+    --section-border-color: #3f3f3f;
+}
+
+/* Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: var(--header-bg);
+    padding: 20px 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+header h1 i {
+    margin-right: 10px;
+    animation: rocketFly 3s ease-in-out infinite alternate;
+}
+
+@keyframes rocketFly {
+    0% { transform: translateY(0) rotate(-5deg); }
+    100% { transform: translateY(-5px) rotate(5deg); }
+}
+
+/* Theme Switcher */
+.theme-switcher {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switcher input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Main Content */
+main {
+    padding: 40px 0;
+}
+
+.category-section {
+    margin-bottom: 50px;
+    padding: 30px;
+    background-color: var(--card-bg); /* Usando card-bg para dar um leve destaque */
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 0.6s ease-out forwards;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-section:nth-child(1) { animation-delay: 0.1s; }
+.category-section:nth-child(2) { animation-delay: 0.2s; }
+.category-section:nth-child(3) { animation-delay: 0.3s; }
+.category-section:nth-child(4) { animation-delay: 0.4s; }
+
+
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.category-section h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--section-border-color);
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.category-section h2 i {
+    margin-right: 15px;
+}
+
+/* Program Grid & Cards */
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.program-card {
+    background-color: var(--bg-color); /* Fundo do card um pouco diferente da seção */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.program-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    transition: border-color 0.3s ease;
+}
+
+.program-card h3 {
+    font-size: 1.4em;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.program-card p {
+    font-size: 0.95em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    flex-grow: 1; /* Para que os botões fiquem alinhados em baixo */
+    opacity: 0.8;
+    transition: color 0.3s ease;
+}
+
+.download-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.download-button i {
+    margin-left: 8px;
+}
+
+.download-button:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: var(--header-bg); /* Reutilizando cor do header para consistência */
+    color: var(--text-color);
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 40px;
+    border-top: 1px solid var(--section-border-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+footer p {
+    opacity: 0.8;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    .category-section h2 {
+        font-size: 1.8em;
+    }
+    .program-card h3 {
+        font-size: 1.2em;
+    }
+    .program-grid {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .category-section {
+        padding: 20px;
+    }
+}
