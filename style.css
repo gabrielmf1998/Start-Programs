@@ -1,24 +1,36 @@
 /* Variáveis de Tema */
 :root {
-    --bg-color-light: #f4f7f6;
+    --color-lightTITULO: #000000;
+    --bg-color-light: #e9e7e7;
     --text-color-light: #333;
+    --text-color-lightTESTE: #000000;
+    --text-color-lightTITULO: #000000;
     --card-bg-light: #ffffff;
     --primary-color-light: #060606;
     --primary-hover-light: #8b8b8b;
     --header-bg-light: #ffffff;
+    --H2-colorCLARO: #000000;
     --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.1);
 
+    --color-darkTITULO: #e2e2e2;
     --bg-color-dark: #000000;
     --text-color-dark: #efefef;
+    --text-color-darkTESTE: #f0f0f0;
+    --text-color-darkTITULO: #ffffff;
     --card-bg-dark: #0f0f0f;
-    --primary-color-dark: #727272;
-    --primary-hover-dark: #353535;
+    --primary-color-dark: #1f1f1f;
+    --primary-hover-dark: #3b3b3b;
     --header-bg-dark: #0b0b0b;
+    --H2-colorESCURO: #ffffff;
     --shadow-dark: 0 5px 15px rgba(0, 0, 0, 0.3);
 
     /* Cores atuais - iniciam com light */
+    --color-TITULO: var(--color-lightTITULO);
     --bg-color: var(--bg-color-light);
     --text-color: var(--text-color-light);
+    --text-colorTESTE: var(--text-color-lightTESTE);
+    --text-colorTITULO: var(--text-color-lightTITULO);
+    --H2-color: var(--H2-colorCLARO);
     --card-bg: var(--card-bg-light);
     --primary-color: var(--primary-color-light);
     --primary-hover: var(--primary-hover-light);
@@ -28,8 +40,12 @@
 }
 
 body.dark-theme {
+    --color-TITULO: var(--color-darkTITULO);
     --bg-color: var(--bg-color-dark);
     --text-color: var(--text-color-dark);
+    --text-colorTESTE: var(--text-color-darkTESTE);
+    --text-colorTITULO: var(--text-color-darkTITULO);
+    --H2-color: var(--H2-colorESCURO);
     --card-bg: var(--card-bg-dark);
     --primary-color: var(--primary-color-dark);
     --primary-hover: var(--primary-hover-dark);
@@ -78,7 +94,8 @@ header .container {
 }
 
 header h1 {
-    color: var(--primary-color);
+    /*color: var(--primary-color);*/
+    color: var(--color-TITULO);
     font-weight: 700;
     transition: color 0.3s ease;
 }
@@ -86,6 +103,13 @@ header h1 {
 header h1 i {
     margin-right: 10px;
     animation: rocketFly 3s ease-in-out infinite alternate;
+}
+
+/* mensagem abaixo do titulo do site*/
+.container .Log {
+    margin-left: 4.5%;
+    font-weight: 100;
+    font-size: small;
 }
 
 @keyframes rocketFly {
@@ -99,6 +123,10 @@ header h1 i {
     display: inline-block;
     width: 60px;
     height: 34px;
+}
+.theme-switcher .iconeswitch {
+    font-size: xx-large;
+    margin-right:0cm         /* Espaçamento à esquerda do ícone */
 }
 
 .theme-switcher input {
@@ -172,7 +200,8 @@ main {
 
 .category-section h2 {
     font-size: 2em;
-    color: var(--primary-color);
+    /*color: var(--primary-color);*/
+    color: var(--H2-color);
     margin-bottom: 25px;
     padding-bottom: 10px;
     border-bottom: 2px solid var(--section-border-color);
@@ -218,18 +247,18 @@ main {
     border: 3px solid var(--primary-color);
     transition: border-color 0.3s ease;
 }
-
+ /*Alterei a variavel color para --text-colorTITULO */
 .program-card h3 {
     font-size: 1.4em;
-    color: var(--text-color);
+    color: var(--text-colorTITULO);
     margin-bottom: 10px;
     font-weight: 600;
     transition: color 0.3s ease;
 }
-
+ /*Alterei a variavel color para --text-colorTESTE */
 .program-card p {
     font-size: 0.95em;
-    color: var(--text-color);
+    color: var(--text-colorTESTE);
     margin-bottom: 20px;
     flex-grow: 1; /* Para que os botões fiquem alinhados em baixo */
     opacity: 0.8;
